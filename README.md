@@ -105,7 +105,7 @@ const tokeniser = new Tokenizer("pk_test_XXX");
 const tokenise = async () => {
   // extract the month and year from the formatted version
   const [expiry_month, expiry_year] = inputValues.expiryDate.split("/");
-  // remove all non-numeric characters
+  // remove all non numeric characters
   const cardNumber = inputValues.number.replace(/\D/g, "");
 
   const response = await tokeniser.tokenize({
