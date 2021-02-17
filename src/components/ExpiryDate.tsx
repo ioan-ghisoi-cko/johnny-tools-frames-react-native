@@ -10,9 +10,9 @@ const ExpiryDate: React.SFC<FramesFieldProps> = (props) => {
   return (
     <FramesConsumer>
       {({ state, dispatch }) => {
-        // if (!state.expiryDate) {
-        //   throw "It looks like you are trying to render the ExpiryDate outside of the Frames Component.";
-        // }
+        if (state.expiryDate === undefined) {
+          throw "It looks like you are trying to render the ExpiryDate outside of the Frames Component.";
+        }
         return (
           <TextInput
             autoCompleteType="cc-exp"

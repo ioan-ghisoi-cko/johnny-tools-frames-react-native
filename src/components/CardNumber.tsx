@@ -10,7 +10,8 @@ const CardNumber: React.SFC<FramesFieldProps> = (props) => {
   return (
     <FramesConsumer>
       {({ state, dispatch }) => {
-        if (!state.cardNumber) {
+        console.log(state.cardNumber);
+        if (state.cardNumber === undefined) {
           throw "It looks like you are trying to render the CardNumber outside of the Frames Component.";
         }
         return (
