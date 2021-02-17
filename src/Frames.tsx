@@ -141,7 +141,6 @@ export const FramesProvider = FramesContext.Provider;
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#eaeaea",
     width: "100%",
   },
 });

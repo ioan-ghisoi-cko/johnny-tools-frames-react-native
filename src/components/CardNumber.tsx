@@ -10,11 +10,11 @@ const CardNumber: React.SFC<FramesFieldProps> = (props) => {
   return (
     <FramesConsumer>
       {({ state, dispatch }) => {
-        // if (!state.cardNumber) {
-        //   throw "It looks like you are trying to render the CardNumber outside of the Frames Component.";
-        // }
+        if (!state.cardNumber) {
+          throw "It looks like you are trying to render the CardNumber outside of the Frames Component.";
+        }
         return (
-          <View>
+          <View style={styles.wrapper}>
             <TextInput
               autoCompleteType="cc-number"
               keyboardType="number-pad"
@@ -38,6 +38,9 @@ const CardNumber: React.SFC<FramesFieldProps> = (props) => {
 };
 
 const styles = StyleSheet.create({
+  wrapper: {
+    backgroundColor: "transparent",
+  },
   cardNumber: {
     borderColor: "black",
     borderWidth: 1,
