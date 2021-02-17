@@ -40,7 +40,7 @@ const CardNumber: React.SFC<FramesFieldProps> = (props) => {
 
 const styles = StyleSheet.create({
   wrapper: {
-    backgroundColor: "transparent",
+    backgroundColor: "#00000000",
   },
   cardNumber: {
     borderColor: "black",

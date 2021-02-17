@@ -8,7 +8,7 @@
 
 ```js
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, TouchableHighlight } from "react-native";
 import {
   Frames,
   CardNumber,
@@ -29,16 +29,23 @@ export default function App() {
           alert(e.token);
         }}
       >
-        <CardNumber style={styles.cardNumber} />
+        <CardNumber style={styles.cardNumber} placeholderTextColor="#9898A0" />
 
         <View style={styles.dateAndCode}>
-          <ExpiryDate style={styles.expiryDate} />
-          <Cvv style={styles.cvv} />
+          <ExpiryDate
+            style={styles.expiryDate}
+            placeholderTextColor="#9898A0"
+          />
+          <Cvv style={styles.cvv} placeholderTextColor="#9898A0" />
         </View>
-        <SubmitButton
-          title="Pay Now"
-          onPress={() => console.log("mercahnt action")}
-        />
+
+        <TouchableHighlight style={styles.button}>
+          <SubmitButton
+            title="Pay Now"
+            onPress={() => console.log("mercahnt action")}
+            color="#fff"
+          />
+        </TouchableHighlight>
       </Frames>
     </View>
   );
@@ -47,27 +54,50 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "#000001",
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "flex-start",
+    paddingTop: 80,
+    paddingLeft: 10,
+    paddingRight: 10,
   },
   dateAndCode: {
+    marginTop: 15,
     flexDirection: "row",
     justifyContent: "space-between",
   },
   cardNumber: {
+    fontSize: 18,
     height: 50,
+    color: "#FEFFFF",
+    backgroundColor: "#1B1C1E",
+    borderColor: "#3A4452",
+    borderRadius: 5,
+    borderWidth: 0,
   },
   expiryDate: {
+    fontSize: 18,
     height: 50,
-    flex: 1,
+    width: "48%",
+    color: "#FEFFFF",
+    backgroundColor: "#1B1C1E",
+    borderWidth: 0,
   },
   cvv: {
+    fontSize: 18,
     height: 50,
-    flex: 1,
+    width: "48%",
+    color: "#FEFFFF",
+    backgroundColor: "#1B1C1E",
+    borderWidth: 0,
   },
-  framesStyle: {
-    width: "80%",
+  button: {
+    height: 50,
+    width: "100%",
+    borderRadius: 5,
+    backgroundColor: "#0E84FF",
+    marginTop: 20,
+    justifyContent: "center",
   },
 });
 ```
