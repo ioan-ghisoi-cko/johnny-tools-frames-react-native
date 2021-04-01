@@ -42,7 +42,7 @@ export default function App() {
         <TouchableHighlight style={styles.button}>
           <SubmitButton
             title="Pay Now"
-            onPress={() => console.log("mercahnt action")}
+            onPress={() => console.log("merchant action")}
             color="#fff"
           />
         </TouchableHighlight>

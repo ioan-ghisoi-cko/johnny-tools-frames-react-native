@@ -32,7 +32,6 @@ const Frames = (props: FramesProps) => {
   );
 
   const submitCard = async () => {
-    console.log("state ", state);
     try {
       let response = await tokenize(
         formatDataForTokenization(state, props.config)
