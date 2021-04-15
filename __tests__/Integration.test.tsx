@@ -79,7 +79,7 @@ describe("CardNumber", () => {
     expect(() => {
       render(<SubmitButton title="Pay Now" onPress={() => {}} />);
     }).toThrow(
-      "It looks like you are trying to render the PayButton outside of the Frames Component."
+      "It looks like you are trying to render the SubmitButton outside of the Frames Component."
     );
   });
 
@@ -205,6 +205,54 @@ describe("CardNumber", () => {
     });
     expect(tokenized.mock.calls[0][0].billing_address.address_line1).toEqual(
       "Wall Street"
+    );
+  });
+
+  it("triggers throws if you render the card number outside of context", async () => {
+    let exception;
+    try {
+      render(<CardNumber placeholder="card-number" />);
+    } catch (e) {
+      exception = e;
+    }
+    expect(exception).toEqual(
+      "It looks like you are trying to render the CardNumber outside of the Frames Component."
+    );
+  });
+
+  it("triggers throws if you render the expiry date outside of context", async () => {
+    let exception;
+    try {
+      render(<ExpiryDate placeholder="expiry-date" />);
+    } catch (e) {
+      exception = e;
+    }
+    expect(exception).toEqual(
+      "It looks like you are trying to render the ExpiryDate outside of the Frames Component."
+    );
+  });
+
+  it("triggers throws if you render the cvv outside of context", async () => {
+    let exception;
+    try {
+      render(<Cvv placeholder="cvv" />);
+    } catch (e) {
+      exception = e;
+    }
+    expect(exception).toEqual(
+      "It looks like you are trying to render the Cvv outside of the Frames Component."
+    );
+  });
+
+  it("triggers throws if you render the submit button outside of context", async () => {
+    let exception;
+    try {
+      render(<SubmitButton title="Pay Now" onPress={() => {}} />);
+    } catch (e) {
+      exception = e;
+    }
+    expect(exception).toEqual(
+      "It looks like you are trying to render the SubmitButton outside of the Frames Component."
     );
   });
 });

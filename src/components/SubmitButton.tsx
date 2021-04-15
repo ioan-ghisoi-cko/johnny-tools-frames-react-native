@@ -7,7 +7,7 @@ const SubmitButton: React.FunctionComponent<ButtonProps> = (props) => {
     <FramesConsumer>
       {({ submitCard }) => {
         if (!submitCard) {
-          throw "It looks like you are trying to render the PayButton outside of the Frames Component.";
+          throw "It looks like you are trying to render the SubmitButton outside of the Frames Component.";
         }
         return (
           <Button

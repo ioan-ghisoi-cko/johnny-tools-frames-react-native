@@ -10,7 +10,7 @@ const Cvv: React.SFC<FramesFieldProps> = (props) => {
   return (
     <FramesConsumer>
       {({ state, dispatch }) => {
-        if (state.cvv === undefined) {
+        if (state?.cvv === undefined) {
           throw "It looks like you are trying to render the Cvv outside of the Frames Component.";
         }
         return (

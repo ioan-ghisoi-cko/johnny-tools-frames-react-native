@@ -6,5 +6,9 @@ export const DEFAULT_CVV_PLACEHOLDER = "•••";
 
 export const SANDBOX_BASE_URL = "https://api.sandbox.checkout.com";
 export const LIVE_BASE_URL = "https://api.checkout.com";
-export const SANDBOX_PUBLIC_KEY_REGEX = /^pk_test_?(\w{8})-(\w{4})-(\w{4})-(\w{4})-(\w{12})$/;
-export const LIVE_PUBLIC_KEY_REGEX = /^pk_?(\w{8})-(\w{4})-(\w{4})-(\w{4})-(\w{12})$/;
+export const LIVE_LOGGER =
+  "https://cloudevents.integration.checkout.com/logging";
+export const SANDBOX_LOGGER =
+  "https://cloudevents.integration.sandbox.checkout.com/logging";
+export const MBC_LIVE_SECRET_KEY_REGEX = /^pk_?(\w{8})-(\w{4})-(\w{4})-(\w{4})-(\w{12})$/;
+export const NAS_LIVE_SECRET_KEY_REGEX = /^pk_?(\w{27})$/;

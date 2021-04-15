@@ -7,6 +7,7 @@ import {
   FramesState,
   FramesDispatch,
 } from "./types/types";
+import { log } from "./utils/logger";
 import { tokenize, formatDataForTokenization } from "./utils/http";
 
 export const FramesContext = React.createContext({} as FramesContextType);
@@ -33,15 +34,19 @@ const Frames = (props: FramesProps) => {
 
   const submitCard = async () => {
     try {
+      log("info", "Submit Card Initiated", props.config);
       let response = await tokenize(
         formatDataForTokenization(state, props.config)
       );
-      if (props.config.debug) console.log(`Emitting "cardTokenized"`, response);
+      if (props.config.debug)
+        console.info(`Emitting "cardTokenized"`, response);
       if (props.cardTokenized) props.cardTokenized(response);
+      log("info", "Card Tokenized", props.config);
     } catch (error) {
       if (props.config.debug)
-        console.log(`Emitting "cardTokenizationFailed"`, error);
+        console.info(`Emitting "cardTokenizationFailed"`, error);
       if (props.cardTokenizationFailed) props.cardTokenizationFailed(error);
+      log("error", "Card Tokenization Failed", props.config, error);
     }
   };
 
@@ -54,7 +59,7 @@ const Frames = (props: FramesProps) => {
       };
 
       if (props.config.debug)
-        console.log(`Emitting "frameValidationChanged"`, payload);
+        console.info(`Emitting "frameValidationChanged"`, payload);
       if (props.frameValidationChanged) props.frameValidationChanged(payload);
     }
   }, [state.validation.cardNumber]);
@@ -68,7 +73,7 @@ const Frames = (props: FramesProps) => {
       };
 
       if (props.config.debug)
-        console.log(`Emitting "frameValidationChanged"`, payload);
+        console.info(`Emitting "frameValidationChanged"`, payload);
 
       if (props.frameValidationChanged) props.frameValidationChanged(payload);
     }
@@ -83,7 +88,7 @@ const Frames = (props: FramesProps) => {
       };
 
       if (props.config.debug)
-        console.log(`Emitting "frameValidationChanged"`, payload);
+        console.info(`Emitting "frameValidationChanged"`, payload);
 
       if (props.frameValidationChanged) props.frameValidationChanged(payload);
     }
@@ -100,7 +105,7 @@ const Frames = (props: FramesProps) => {
       };
 
       if (props.config.debug)
-        console.log(`Emitting "paymentMethodChanged"`, payload);
+        console.info(`Emitting "paymentMethodChanged"`, payload);
 
       if (props.paymentMethodChanged) props.paymentMethodChanged(payload);
     }
@@ -118,7 +123,7 @@ const Frames = (props: FramesProps) => {
       };
 
       if (props.config.debug)
-        console.log(`Emitting "cardValidationChanged"`, payload);
+        console.info(`Emitting "cardValidationChanged"`, payload);
 
       if (props.cardValidationChanged) props.cardValidationChanged(payload);
     }
