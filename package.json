@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest --coverage",
     "test:watch": "jest --watch --coverage=false",
-    "build": "tsc --watch"
+    "build": "tsc"
   },
   "dependencies": {
     "creditcards": "^3.1.0",
