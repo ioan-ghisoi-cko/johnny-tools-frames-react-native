@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { View, StyleSheet } from "react-native";
 import { framesReducer } from "./utils/reducer";
+import "react-native-get-random-values";
 import {
   FramesContextType,
   FramesProps,

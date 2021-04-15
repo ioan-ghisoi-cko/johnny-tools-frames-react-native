@@ -1,5 +1,4 @@
 import { Platform } from "react-native";
-import "react-native-get-random-values";
 
 import {
   LIVE_LOGGER,
