@@ -1,6 +1,7 @@
 import { isValidDate } from "../src/utils/card";
 import { getFormattedDate } from "../src/utils/date";
 import { getEnvironment } from "../src/utils/http";
+import { getEnvironment as loggerGetEnvironment } from "../src/utils/logger";
 
 const PK_SB = "pk_test_4296fd52-efba-4a38-b6ce-cf0d93639d8a";
 const PK_PROD = "pk_4296fd52-efba-4a38-b6ce-cf0d93639d8a"; // fake key
@@ -37,10 +38,18 @@ describe("Environment", () => {
     let env = getEnvironment(PK_SB);
     expect(env).toBe("https://api.sandbox.checkout.com/tokens");
   });
+});
 
-  it("rejects invalid key", async () => {
-    expect(() => {
-      let env = getEnvironment("pk123456789");
-    }).toThrow("The key provided is not in the correct format.");
+describe("Logger Environment", () => {
+  it("it gets the live environment", async () => {
+    let env = loggerGetEnvironment(PK_PROD);
+    expect(env).toBe("https://cloudevents.integration.checkout.com/logging");
+  });
+
+  it("gets the sb environment", async () => {
+    let env = loggerGetEnvironment(PK_SB);
+    expect(env).toBe(
+      "https://cloudevents.integration.sandbox.checkout.com/logging"
+    );
   });
 });

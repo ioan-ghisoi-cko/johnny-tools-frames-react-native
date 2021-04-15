@@ -18,7 +18,7 @@ export const log = async (
   try {
     const pjson = require("../../package.json");
     const date = new Date();
-    let response = await fetch(getEnvironment(config.publicKey), {
+    await fetch(getEnvironment(config.publicKey), {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -43,12 +43,6 @@ export const log = async (
         },
       }),
     });
-    if (response.ok) {
-      return {};
-    } else {
-      let json = await response.json();
-      throw json;
-    }
   } catch (error) {
     throw error;
   }
