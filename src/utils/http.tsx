@@ -7,8 +7,8 @@ import {
 } from "../types/types";
 import {
   EXPIRY_DATE_DELIMITER,
-  SANDBOX_PUBLIC_KEY_REGEX,
-  LIVE_PUBLIC_KEY_REGEX,
+  MBC_LIVE_SECRET_KEY_REGEX,
+  NAS_LIVE_SECRET_KEY_REGEX,
   SANDBOX_BASE_URL,
   LIVE_BASE_URL,
 } from "../utils/constants";
@@ -92,12 +92,7 @@ export const formatDataForTokenization = (
   };
 };
 
-export const getEnvironment = (key: string) => {
-  if (SANDBOX_PUBLIC_KEY_REGEX.test(key)) {
-    return `${SANDBOX_BASE_URL}/tokens`;
-  } else if (LIVE_PUBLIC_KEY_REGEX.test(key)) {
-    return `${LIVE_BASE_URL}/tokens`;
-  } else {
-    throw "The key provided is not in the correct format.";
-  }
-};
+export const getEnvironment = (key: string) =>
+  MBC_LIVE_SECRET_KEY_REGEX.test(key) || NAS_LIVE_SECRET_KEY_REGEX.test(key)
+    ? `${LIVE_BASE_URL}/tokens`
+    : `${SANDBOX_BASE_URL}/tokens`;

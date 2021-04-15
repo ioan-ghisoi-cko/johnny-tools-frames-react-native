@@ -6,7 +6,7 @@ import { FramesConsumer } from "../Frames";
 import { FramesFieldProps } from "../types/types";
 import { DEFAULT_CARD_NUMBER_PLACEHOLDER } from "../utils/constants";
 
-const CardNumber: React.SFC<FramesFieldProps> = (props) => {
+const CardNumber: React.FC<FramesFieldProps> = (props) => {
   return (
     <FramesConsumer>
       {({ state, dispatch }) => {
