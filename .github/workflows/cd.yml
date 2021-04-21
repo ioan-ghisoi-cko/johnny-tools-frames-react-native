@@ -1,9 +1,9 @@
 name: Test and Deploy
 
 on:
-  push:
-    branches:
-      - master
+    push:
+        branches:
+            - master
 
 jobs:
     test-and-coverage:
@@ -22,18 +22,18 @@ jobs:
                   token: ${{ secrets.CODECOV_TOKEN }}
                   verbose: true
 
-  publish-npm:
-    needs: test
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-        with:
-          node-version: 12
-          registry-url: https://registry.npmjs.org/
-      - run: npm ci
-      - run: npm run build
-      - run: cp -R src/icons dist/
-      - run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NODE_AUTH_TOKEN}}
+    publish-npm:
+        needs: test-and-coverage
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+            - uses: actions/setup-node@v1
+              with:
+                  node-version: 12
+                  registry-url: https://registry.npmjs.org/
+            - run: npm ci
+            - run: npm run build
+            - run: cp -R src/icons dist/
+            - run: npm publish
+              env:
+                  NODE_AUTH_TOKEN: ${{secrets.NODE_AUTH_TOKEN}}
