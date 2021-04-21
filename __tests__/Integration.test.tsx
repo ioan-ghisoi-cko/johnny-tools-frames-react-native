@@ -83,6 +83,40 @@ describe("CardNumber", () => {
     );
   });
 
+  it("throws allow then use of the onPress handler", async () => {
+    const press = jest.fn();
+
+    const { getByPlaceholderText, getByText } = render(
+      <Frames
+        config={{
+          publicKey: PK,
+          debug: true,
+          cardholder: {
+            name: "John Smith",
+            billingAddress: {
+              addressLine1: "Wall Street",
+              addressLine2: "Dollar Avenue",
+              city: "London",
+              state: "London",
+              zip: "W1W 8GY",
+              country: "GB",
+            },
+            phone: "07123456789",
+          },
+        }}
+        cardTokenized={() => {}}
+      >
+        <CardNumber placeholder="card-number" />
+        <ExpiryDate placeholder="expiry-date" />
+        <Cvv placeholder="cvv" />
+        <SubmitButton title="Pay Now" onPress={press} />
+      </Frames>
+    );
+    let pay = getByText("Pay Now");
+    fireEvent.press(pay);
+    expect(press).toHaveBeenCalled();
+  });
+
   it("fails tokenization", async () => {
     const failed = jest.fn();
 

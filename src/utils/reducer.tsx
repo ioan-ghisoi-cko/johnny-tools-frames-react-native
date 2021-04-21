@@ -56,7 +56,5 @@ export const framesReducer = (prevState: FramesState, dispatchArg?: any) => {
             prevState.validation.expiryDate,
         },
       };
-    default:
-      return prevState;
   }
 };
