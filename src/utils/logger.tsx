@@ -32,8 +32,8 @@ export const log = async (
         time: date.toISOString(),
         data: {
           ...extra,
-          os: Platform.OS || "unknown",
-          osVersion: Platform.Version || "unknown",
+          os: Platform.OS,
+          osVersion: Platform.Version,
           sdkVersion: pjson.version,
         },
         cko: {

@@ -52,4 +52,9 @@ describe("Logger Environment", () => {
       "https://cloudevents.integration.sandbox.checkout.com/logging"
     );
   });
+
+  it("returns empty", async () => {
+    let date = getFormattedDate("");
+    expect(date).toBe("");
+  });
 });

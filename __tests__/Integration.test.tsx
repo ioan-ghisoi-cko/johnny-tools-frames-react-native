@@ -112,7 +112,15 @@ describe("CardNumber", () => {
         <SubmitButton title="Pay Now" onPress={press} />
       </Frames>
     );
+    let cardNumber = getByPlaceholderText("card-number");
+    let expiryDate = getByPlaceholderText("expiry-date");
+    let cvv = getByPlaceholderText("cvv");
     let pay = getByText("Pay Now");
+    fireEvent.changeText(cardNumber, "4242424242424242");
+    fireEvent.changeText(expiryDate, "1128");
+    fireEvent.changeText(cvv, "100");
+    fireEvent.press(pay);
+
     fireEvent.press(pay);
     expect(press).toHaveBeenCalled();
   });
@@ -196,6 +204,36 @@ describe("CardNumber", () => {
     expect(tokenized.mock.calls[0][0].billing_address.address_line1).toEqual(
       "Wall Street"
     );
+  });
+
+  it("triggers the card tokenization with amex", async () => {
+    const tokenized = jest.fn();
+
+    const { getByPlaceholderText, getByText } = render(
+      <Frames
+        config={{
+          publicKey: PK,
+        }}
+        cardTokenized={tokenized}
+      >
+        <CardNumber placeholder="card-number" />
+        <ExpiryDate placeholder="expiry-date" />
+        <Cvv placeholder="cvv" />
+        <SubmitButton title="Pay Now" onPress={() => {}} />
+      </Frames>
+    );
+
+    let cardNumber = getByPlaceholderText("card-number");
+    let expiryDate = getByPlaceholderText("expiry-date");
+    let cvv = getByPlaceholderText("cvv");
+    let pay = getByText("Pay Now");
+    fireEvent.changeText(cardNumber, "378282246310005");
+    fireEvent.changeText(expiryDate, "1128");
+    fireEvent.changeText(cvv, "1000");
+    fireEvent.press(pay);
+    await waitFor(() => {
+      expect(tokenized).toHaveBeenCalledTimes(1);
+    });
   });
 
   it("triggers the card tokenization with minimal billing details", async () => {
