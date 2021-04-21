@@ -1,10 +1,32 @@
-❗️EXPERIMENTAL
+❗️BETA
+
+# Frames React Native 
+[![codecov](https://codecov.io/gh/ioan-ghisoi-cko/johnny-tools-frames-react-native/branch/master/graph/badge.svg?token=KYGJUF3OM8)](https://codecov.io/gh/ioan-ghisoi-cko/johnny-tools-frames-react-native)
+[![Test and Deploy](https://github.com/ioan-ghisoi-cko/johnny-tools-frames-react-native/actions/workflows/cd.yml/badge.svg)](https://github.com/ioan-ghisoi-cko/johnny-tools-frames-react-native/actions/workflows/cd.yml)
 
 <p align="center">
 	<img src="https://media.giphy.com/media/L0CHkoZlKjp9qjXgoV/giphy.gif" width="320" alt="Demo frames ios"/>
 </p>
 
-# Example
+# :rocket: Install
+
+```bash
+yarn add johnny-tools-frames-react-native
+```
+
+# :computer: Import
+
+```js
+import {
+  Frames,
+  CardNumber,
+  ExpiryDate,
+  Cvv,
+  SubmitButton,
+} from "johnny-tools-frames-react-native";
+```
+
+# :tada: Example
 
 ```js
 import React from "react";
@@ -100,4 +122,3 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
 });
-```
