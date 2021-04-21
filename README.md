@@ -5,7 +5,7 @@
 [![Test and Deploy](https://github.com/ioan-ghisoi-cko/johnny-tools-frames-react-native/actions/workflows/cd.yml/badge.svg)](https://github.com/ioan-ghisoi-cko/johnny-tools-frames-react-native/actions/workflows/cd.yml)
 
 <p align="center">
-	<img src="https://media.giphy.com/media/L0CHkoZlKjp9qjXgoV/giphy.gif" width="320" alt="Demo frames ios"/>
+	<img src="https://s3.gifyu.com/images/Untitled62eae8e0234fa129.gif" alt="Demo frames react native"/>
 </p>
 
 # :rocket: Install
