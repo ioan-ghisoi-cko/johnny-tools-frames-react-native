@@ -1,6 +1,7 @@
 ❗️BETA
 
-# Frames React Native 
+# Frames React Native
+
 [![codecov](https://codecov.io/gh/ioan-ghisoi-cko/johnny-tools-frames-react-native/branch/master/graph/badge.svg?token=KYGJUF3OM8)](https://codecov.io/gh/ioan-ghisoi-cko/johnny-tools-frames-react-native)
 [![Test and Deploy](https://github.com/ioan-ghisoi-cko/johnny-tools-frames-react-native/actions/workflows/cd.yml/badge.svg)](https://github.com/ioan-ghisoi-cko/johnny-tools-frames-react-native/actions/workflows/cd.yml)
 
@@ -122,3 +123,40 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
 });
+```
+
+## Trigger tokenisation
+
+The tokenisation is triggerd when the SubmitButton is pressed. The action is async, so the outcome of the tokenisation will be shared in the _cardTokenized_ or _cardTokenizationFailed_ handlers.
+
+## The `props` for the Frames wrapper component
+
+| prop              | type    | desciption                                    |
+| ----------------- | ------- | --------------------------------------------- |
+| config.publicKey  | string  | The public key from your Checkout.com account |
+| config.debug      | boolean | Trigger the debugg mode ()                    |
+| config.cardholder | object  | The cardholder name and billing details       |
+
+## The `cardholder` information
+
+| prop                                   | type   | desciption                       |
+| -------------------------------------- | ------ | -------------------------------- |
+| cardholder.name                        | string | The name of the cardholder       |
+| cardholder.phone                       | string | The phone number of the customer |
+| cardholder.billingAddress              | object | The cardholder billing address   |
+| cardholder.billingAddress.addressLine1 | string | Address line 1                   |
+| cardholder.billingAddress.addressLine2 | string | Address line 2                   |
+| cardholder.billingAddress.zip          | string | Zip                              |
+| cardholder.billingAddress.city         | string | City                             |
+| cardholder.billingAddress.state        | string | State                            |
+| cardholder.billingAddress.country      | string | Country                          |
+
+## The `hanlders`
+
+| prop                   | type     | desciption                                                                                               |
+| ---------------------- | -------- | -------------------------------------------------------------------------------------------------------- |
+| frameValidationChanged | function | Triggered when a field's validation status has changed. Use it to show error messages or update the UI.  |
+| paymentMethodChanged   | function | Triggered when a valid payment method is detected based on the card number being entered.                |
+| cardValidationChanged  | function | Triggered when the state of the card validation changes.                                                 |
+| cardTokenized          | function | Triggered after a card is tokenized. Here you will get the card token alongside general card information |
+| cardTokenizationFailed | function | Triggered after the card tokenization fails.                                                             |
