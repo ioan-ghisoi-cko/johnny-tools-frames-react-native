@@ -15,11 +15,13 @@ import {
 
 export const tokenize = async (e: TokenizationParams) => {
   try {
+    const pjson = require("../../package.json");
     let response = await fetch(getEnvironment(e.key), {
       method: "POST",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
+        "User-Agent": `frames-react-native/${pjson.version}`,
         Authorization: e.key,
       },
       body: JSON.stringify(e.body),

@@ -35,6 +35,11 @@ export const log = async (
           os: Platform.OS,
           osVersion: Platform.Version,
           sdkVersion: pjson.version,
+          environment:
+            MBC_LIVE_SECRET_KEY_REGEX.test(config.publicKey) ||
+            NAS_LIVE_SECRET_KEY_REGEX.test(config.publicKey)
+              ? `production`
+              : `sandbox`,
         },
         cko: {
           ddTags: "source:frames-react-native-sdk",

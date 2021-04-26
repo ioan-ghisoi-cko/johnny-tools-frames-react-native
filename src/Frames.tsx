@@ -35,19 +35,32 @@ const Frames = (props: FramesProps) => {
 
   const submitCard = async () => {
     try {
-      log("info", "Submit Card Initiated", props.config);
+      log(
+        "info",
+        "com.checkout.frames-mobile-sdk.token_requested",
+        props.config
+      );
       let response = await tokenize(
         formatDataForTokenization(state, props.config)
       );
       if (props.config.debug)
         console.info(`Emitting "cardTokenized"`, response);
       if (props.cardTokenized) props.cardTokenized(response);
-      log("info", "Card Tokenized", props.config);
+      log(
+        "info",
+        "com.checkout.frames-mobile-sdk.token_response",
+        props.config
+      );
     } catch (error) {
       if (props.config.debug)
         console.info(`Emitting "cardTokenizationFailed"`, error);
       if (props.cardTokenizationFailed) props.cardTokenizationFailed(error);
-      log("error", "Card Tokenization Failed", props.config, error);
+      log(
+        "error",
+        "com.checkout.frames-mobile-sdk.exception",
+        props.config,
+        error
+      );
     }
   };
 
